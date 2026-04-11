@@ -22,4 +22,18 @@ class MoodLog extends Model
     public function activities() {
         return $this->belongsToMany(Activity::class, 'mood_activities', 'id_log', 'id_activity');
     }
+
+    /**
+     * Scope untuk mengambil mood log user per bulan.
+     * Digunakan oleh MoodLogController dan MoodStatController.
+     */
+    public function scopeForMonth($query, int $userId, int $year, int $month)
+    {
+        return $query
+            ->where('id_user', $userId)
+            ->whereYear('tanggal', $year)
+            ->whereMonth('tanggal', $month);
+    }
+
+    
 }

@@ -15,3 +15,23 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* Menghilangkan icon kalender bawaan yang kaku */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5); /* Supaya iconnya agak abu-abu/gelap */
+    margin-right: 10px;
+}
+
+/* Mengatur agar teks placeholder terlihat rapi sebelum diisi */
+input[type="date"]::before {
+    content: attr(placeholder);
+    width: 100%;
+    color: #9ca3af; /* Warna abu-abu seperti placeholder biasa */
+}
+
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+    display: none;
+}
